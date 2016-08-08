@@ -11,5 +11,5 @@ import com.lhb.model.BookViewModel;
 public interface BookViewRepository extends JpaRepository<BookViewModel, Integer>{
 
 	List<BookViewModel> findByAuthorLike(String author);
-
+	List<BookViewModel> findByDetailLike(String detail);
 }

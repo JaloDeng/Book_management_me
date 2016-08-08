@@ -32,19 +32,19 @@ public class BookService {
 //		return listBookView;
 //	}
 	
-	public Map<String, Object> getAll(Integer page,Integer limit,String author) {        //获得视图的信息
+	public Map<String, Object> getAll(Integer page,Integer limit,String text) {        //获得视图的信息
 		page =page-1;
 		List<BookViewModel> bookviewModel = new ArrayList<BookViewModel>();
 		Page<BookViewModel> pagebean = null;
 		long total=0; 
-		if(author==null){
+		if(text==null){
 			PageRequest pageRequest = new PageRequest(page, limit);
 			pagebean = bookviewRepository.findAll(pageRequest);
 			bookviewModel = pagebean.getContent();
 			total = pagebean.getTotalElements();
 		}
 		else{
-			bookviewModel = bookviewRepository.findByAuthorLike("%"+author+"%");
+			bookviewModel = bookviewRepository.findByDetailLike("%"+text+"%");
 			total = bookviewModel.size();
 		}
 //		List<BookViewModel> bookview = bookviewRepository.findAll();
