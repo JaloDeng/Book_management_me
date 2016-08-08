@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+Ext.define('Lhb.store.BookTypeStore',{
+	extend:'Ext.data.Store',
+	fields:['id','title','detail'],
+	proxy:{
+		waitTitle:'提示',
+		waitMsg:'加载中...',
+		url:'./bookType/getBookType',
+		type:'ajax',
+		reader:{
+			type:'json',
+			root:'items',
+			totalProperty:'total'
+	}	
+	},
+	remoteSort:true,
+	autoLoad:true
+	
+});
